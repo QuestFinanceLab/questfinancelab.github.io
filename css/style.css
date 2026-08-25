@@ -918,11 +918,11 @@ p {
 }
 
 
-/* 한 사람 */
+/* 한 명의 멤버 */
 
 .person-row {
   display: grid;
-  grid-template-columns: 150px minmax(0, 1fr);
+  grid-template-columns: 150px minmax(0, 1fr) auto;
   gap: 28px;
 
   padding: 22px 0;
@@ -931,33 +931,20 @@ p {
 }
 
 
-/* 직책 */
+/* 이름 */
 
-.person-role {
-  padding-top: 2px;
-
-  color: #8d959e;
-
-  font-size: 10px;
-  font-weight: 600;
-  line-height: 1.5;
-
-  text-transform: uppercase;
-  letter-spacing: 0.07em;
-}
-
-
-/* 이름 / 학교 / 전공 */
-
-.person-info h3 {
-  margin: 0 0 5px;
+.person-name h3 {
+  margin: 0;
 
   color: #22272e;
 
   font-size: 16px;
   font-weight: 650;
-  line-height: 1.45;
+  line-height: 1.5;
 }
+
+
+/* 학교 */
 
 .person-school {
   margin: 0 0 2px !important;
@@ -967,6 +954,9 @@ p {
   font-size: 13px;
   line-height: 1.6;
 }
+
+
+/* 전공 */
 
 .person-major {
   margin: 0 !important;
@@ -978,10 +968,27 @@ p {
 }
 
 
-/* Executive Board는 이름이 조금 더 잘 보이게 */
+/* LinkedIn */
 
-.people-list .person-row:hover .person-info h3 {
+..person-external {
+  align-self: start;
+
+  padding-top: 2px;
+
+  color: #7a8794;
+
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 1.5;
+
+  white-space: nowrap;
+
+  transition: color 0.15s ease;
+}
+
+.person-external:hover {
   color: #1d3557;
+  text-decoration: underline;
 }
 
 
@@ -992,17 +999,13 @@ p {
 @media (max-width: 720px) {
 
   .person-row {
-    grid-template-columns: 110px minmax(0, 1fr);
+    grid-template-columns: 110px minmax(0, 1fr) auto;
     gap: 18px;
 
     padding: 19px 0;
   }
 
-  .person-role {
-    font-size: 9px;
-  }
-
-  .person-info h3 {
+  .person-name h3 {
     font-size: 15px;
   }
 
@@ -1015,10 +1018,12 @@ p {
     display: block;
   }
 
-  .person-role {
-    margin-bottom: 7px;
+  .person-name {
+    margin-bottom: 8px;
   }
 
+
+  
 }
 
 /* =========================================================
