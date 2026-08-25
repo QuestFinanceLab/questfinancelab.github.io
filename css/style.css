@@ -702,3 +702,384 @@ p {
   }
 
 }
+
+/* =========================================================
+   RESEARCH PAGE
+========================================================= */
+
+
+/* Research Archive header */
+
+.research-archive .section-heading-row {
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+
+/* Filter buttons */
+
+.research-filter {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 5px;
+}
+
+.filter-button {
+  appearance: none;
+  border: 1px solid #dfe3e7;
+  border-radius: 4px;
+
+  padding: 5px 9px;
+
+  background: #ffffff;
+  color: #7a838d;
+
+  font-family: inherit;
+  font-size: 10px;
+  line-height: 1.3;
+
+  cursor: pointer;
+
+  transition:
+    border-color 0.15s ease,
+    color 0.15s ease,
+    background 0.15s ease;
+}
+
+.filter-button:hover {
+  border-color: #aeb6bf;
+  color: #1d3557;
+}
+
+.filter-button.active {
+  border-color: #1d3557;
+  background: #1d3557;
+  color: #ffffff;
+}
+
+
+/* Year */
+
+.research-year {
+  border-top: 1px solid #e2e5e8;
+  padding-top: 22px;
+}
+
+.year-heading {
+  margin: 0 0 20px !important;
+
+  color: #1d3557 !important;
+
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 22px !important;
+  font-weight: 400 !important;
+}
+
+
+/* Empty archive */
+
+.research-empty-state {
+  padding: 18px 0 6px;
+}
+
+.research-empty-state p {
+  font-size: 14px;
+}
+
+.research-empty-title {
+  margin-bottom: 7px !important;
+
+  color: #3b444e !important;
+
+  font-size: 15px !important;
+  font-weight: 600;
+}
+
+
+/* =========================================================
+   PUBLICATION ENTRY
+========================================================= */
+
+.publication-example {
+  margin-top: 25px;
+  padding: 24px 0;
+
+  border-top: 1px solid #dfe3e7;
+  border-bottom: 1px solid #dfe3e7;
+}
+
+.publication-type {
+  margin: 0 0 8px !important;
+
+  color: #8b949e !important;
+
+  font-size: 10px !important;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
+
+.publication-example h3 {
+  margin: 0 0 5px;
+
+  color: #22272e;
+
+  font-size: 17px;
+  font-weight: 650;
+}
+
+.publication-authors {
+  margin: 0 0 13px !important;
+
+  color: #707983 !important;
+
+  font-size: 13px;
+}
+
+
+/* Publication tags */
+
+.publication-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+
+  margin-bottom: 14px;
+}
+
+.publication-tags span {
+  color: #6f7f8f;
+
+  font-size: 11px;
+}
+
+
+/* Report / Presentation / Summary */
+
+.publication-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.publication-links span {
+  display: inline-block;
+
+  padding: 4px 9px;
+
+  border: 1px solid #d8dde2;
+  border-radius: 3px;
+
+  color: #426a8c;
+  background: #fafbfc;
+
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+.example-note {
+  margin-top: 10px !important;
+
+  color: #9aa1a9 !important;
+
+  font-size: 11px !important;
+  line-height: 1.6;
+}
+
+
+/* =========================================================
+   RESEARCH — MOBILE
+========================================================= */
+
+@media (max-width: 720px) {
+
+  .research-archive .section-heading-row {
+    display: block;
+  }
+
+  .research-filter {
+    justify-content: flex-start;
+    margin-top: 13px;
+  }
+
+  .publication-example h3 {
+    font-size: 16px;
+  }
+
+}
+
+/* =========================================================
+   PEOPLE PAGE
+========================================================= */
+
+.people-list {
+  width: 100%;
+  border-top: 1px solid #dfe3e7;
+}
+
+
+/* 한 사람 */
+
+.person-row {
+  display: grid;
+  grid-template-columns: 150px minmax(0, 1fr);
+  gap: 28px;
+
+  padding: 22px 0;
+
+  border-bottom: 1px solid #e7e9ec;
+}
+
+
+/* 직책 */
+
+.person-role {
+  padding-top: 2px;
+
+  color: #8d959e;
+
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1.5;
+
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+
+
+/* 이름 / 학교 / 전공 */
+
+.person-info h3 {
+  margin: 0 0 5px;
+
+  color: #22272e;
+
+  font-size: 16px;
+  font-weight: 650;
+  line-height: 1.45;
+}
+
+.person-school {
+  margin: 0 0 2px !important;
+
+  color: #5f6974 !important;
+
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.person-major {
+  margin: 0 !important;
+
+  color: #8b939c !important;
+
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+
+/* Executive Board는 이름이 조금 더 잘 보이게 */
+
+.people-list .person-row:hover .person-info h3 {
+  color: #1d3557;
+}
+
+
+/* =========================================================
+   PEOPLE PAGE — MOBILE
+========================================================= */
+
+@media (max-width: 720px) {
+
+  .person-row {
+    grid-template-columns: 110px minmax(0, 1fr);
+    gap: 18px;
+
+    padding: 19px 0;
+  }
+
+  .person-role {
+    font-size: 9px;
+  }
+
+  .person-info h3 {
+    font-size: 15px;
+  }
+
+}
+
+
+@media (max-width: 420px) {
+
+  .person-row {
+    display: block;
+  }
+
+  .person-role {
+    margin-bottom: 7px;
+  }
+
+}
+
+/* =========================================================
+   RECRUITING PAGE
+========================================================= */
+
+.recruit-info-list {
+  width: 100%;
+  border-top: 1px solid #dfe3e7;
+}
+
+.recruit-info-row {
+  display: grid;
+  grid-template-columns: 170px minmax(0, 1fr);
+  gap: 28px;
+
+  padding: 17px 0;
+
+  border-bottom: 1px solid #e7e9ec;
+}
+
+.recruit-info-row span {
+  color: #929aa3;
+
+  font-size: 10px;
+  font-weight: 600;
+
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.recruit-info-row strong {
+  color: #444d57;
+
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 720px) {
+
+  .recruit-info-row {
+    grid-template-columns: 130px minmax(0, 1fr);
+    gap: 18px;
+  }
+
+}
+
+
+@media (max-width: 420px) {
+
+  .recruit-info-row {
+    display: block;
+  }
+
+  .recruit-info-row span {
+    display: block;
+    margin-bottom: 5px;
+  }
+
+}
