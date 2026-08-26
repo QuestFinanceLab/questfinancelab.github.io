@@ -296,3 +296,27 @@ window.addEventListener(
 
 
 updateHeaderDepth();
+
+/* =========================================================
+   MOBILE NAV — KEEP ACTIVE ITEM IN VIEW
+========================================================= */
+
+const activeNavItem =
+  document.querySelector(".main-nav a.active");
+
+if (
+  activeNavItem &&
+  window.matchMedia("(max-width: 720px)").matches
+) {
+
+  requestAnimationFrame(() => {
+
+    activeNavItem.scrollIntoView({
+      behavior: "auto",
+      block: "nearest",
+      inline: "center"
+    });
+
+  });
+
+}
