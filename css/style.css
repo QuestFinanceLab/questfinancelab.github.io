@@ -105,7 +105,7 @@ button:focus-visible {
   outline: 2px solid rgba(29, 53, 87, 0.55);
   outline-offset: 4px;
   border-radius: 2px;
-}s
+}
 
 p {
   margin: 0 0 1.25rem;
@@ -892,6 +892,16 @@ z-index: 2;
 
 @media (max-width: 720px) {
 
+  /* Mobile에서는 desktop research grid 제거 */
+  body::before {
+    display: none;
+  }
+
+
+  /* =========================================
+     MOBILE HEADER
+  ========================================= */
+
   .site-header {
     position: static;
   }
@@ -899,33 +909,56 @@ z-index: 2;
   .header-inner {
     min-height: auto;
 
-    padding: 16px 20px;
+    padding: 14px 18px 12px;
 
     display: grid;
     grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto;
 
-    gap: 13px;
+    column-gap: 16px;
+    row-gap: 10px;
   }
 
+
+  /* Quest — 좌측 상단 */
+
   .brand {
+    grid-column: 1;
+    grid-row: 1;
+
     margin: 0;
 
     font-size: 20px;
+    line-height: 1.3;
   }
 
+
+  /* KR / EN — 우측 상단 */
+
   .language-switch {
+    grid-column: 2;
+    grid-row: 1;
+
+    justify-self: end;
+    align-self: center;
+
     margin: 0;
+
+    font-size: 11px;
   }
+
+
+  /* Navigation — 두 번째 줄 */
 
   .main-nav {
     grid-column: 1 / -1;
+    grid-row: 2;
 
     width: 100%;
 
-    gap: 22px;
+    gap: 20px;
 
     overflow-x: auto;
-
     scrollbar-width: none;
   }
 
@@ -933,60 +966,131 @@ z-index: 2;
     display: none;
   }
 
- .main-nav a {
-  flex-shrink: 0;
+  .main-nav a {
+    flex-shrink: 0;
 
-  padding: 4px 0 7px;
+    padding: 3px 0 7px;
 
-  font-size: 13px;
-}
+    font-size: 12.5px;
+  }
 
-/* 모바일에서는 hover / active 모두 같은 underline 위치 */
+  .main-nav a::after {
+    bottom: 3px;
+  }
 
-.main-nav a::after {
-  bottom: 5px;
-}
 
+  /* =========================================
+     PAGE
+  ========================================= */
 
   .page-layout {
     display: block;
 
-    padding: 45px 22px 75px;
+    padding: 34px 20px 70px;
   }
 
 
-  .profile {
+  /* About 외 페이지는 profile이 없으므로
+     본문을 조금 더 빠르게 시작 */
+
+  body:not([data-page="about"]) .page-layout {
+    padding-top: 30px;
+  }
+
+
+  /* =========================================
+     ABOUT — COMPACT PROFILE
+  ========================================= */
+
+  body[data-page="about"] .profile {
     position: static;
 
-    margin-bottom: 55px;
-    padding-bottom: 38px;
+    display: grid;
+
+    grid-template-columns: 74px minmax(0, 1fr);
+
+    grid-template-areas:
+      "mark name"
+      "mark role"
+      "mark tagline";
+
+    column-gap: 20px;
+    row-gap: 1px;
+
+    align-items: start;
+
+    margin-bottom: 34px;
+    padding-bottom: 28px;
 
     border-bottom: 1px solid #e7e9ec;
   }
 
-  .profile-mark {
-    width: 82px;
-    height: 82px;
 
-    margin-bottom: 20px;
+  body[data-page="about"] .profile-mark {
+    grid-area: mark;
 
-    font-size: 37px;
+    width: 70px;
+    height: 70px;
+
+    margin: 3px 0 0;
+
+    font-size: 32px;
   }
 
-  .profile-name {
-    font-size: 25px;
+  body[data-page="about"] .profile-mark::before {
+    inset: -6px;
   }
 
-  .profile-tagline {
-    margin-bottom: 20px;
 
-    font-size: 17px;
+  body[data-page="about"] .profile-name {
+    grid-area: name;
+
+    margin: 0 0 1px;
+
+    font-size: 23px;
+    line-height: 1.25;
   }
 
-  .profile-info {
-    max-width: 250px;
+
+  body[data-page="about"] .profile-role {
+    grid-area: role;
+
+    margin: 0 0 7px;
+
+    font-size: 12px;
+    line-height: 1.5;
   }
 
+
+  body[data-page="about"] .profile-tagline {
+    grid-area: tagline;
+
+    margin: 0;
+
+    font-size: 15px;
+    line-height: 1.35;
+  }
+
+
+  /* 위치 / Finance Lab 정보는 모바일 About에서 제거 */
+
+  body[data-page="about"] .profile-info {
+    display: none;
+  }
+
+
+  /* =========================================
+     SUB PAGES — PROFILE REMOVE
+  ========================================= */
+
+  body:not([data-page="about"]) .profile {
+    display: none;
+  }
+
+
+  /* =========================================
+     CONTENT
+  ========================================= */
 
   .content {
     max-width: none;
@@ -998,15 +1102,15 @@ z-index: 2;
   }
 
   .content-section h2 {
-    font-size: 23px;
+    font-size: 22px;
   }
 
   .lead {
     font-size: 18px;
+    line-height: 1.65;
   }
 
 }
-
 
 /* =========================================================
    VERY SMALL MOBILE
@@ -1730,6 +1834,410 @@ z-index: 2;
 
 }
 
+/* =========================================================
+   MOBILE PASS 02 — READABILITY + TOUCH
+========================================================= */
+
+@media (max-width: 720px) {
+
+  /* ---------- TYPOGRAPHY ---------- */
+
+  body {
+    font-size: 15px;
+    line-height: 1.78;
+  }
+
+  .content-section {
+    padding-bottom: 34px;
+    margin-bottom: 34px;
+  }
+
+  .content-section h2 {
+    margin-bottom: 20px;
+
+    font-size: 21px;
+    line-height: 1.35;
+  }
+
+  .content-section > h2,
+  .section-heading-row > h2 {
+    gap: 8px;
+  }
+
+  .content-section > h2::before,
+  .section-heading-row > h2::before {
+    width: 14px;
+    flex-basis: 14px;
+  }
+
+  .content-section p {
+    line-height: 1.78;
+
+    word-break: keep-all;
+    overflow-wrap: break-word;
+  }
+
+  .lead {
+    margin-bottom: 20px !important;
+
+    font-size: 17px;
+    line-height: 1.68;
+  }
+
+
+  /* ---------- AREAS ---------- */
+
+  .tag-list {
+    gap: 6px;
+  }
+
+  .tag-list span {
+    padding: 4px 9px;
+
+    font-size: 11.5px;
+  }
+
+
+  /* ---------- LEARNING / CURRICULUM ---------- */
+
+  .learning-item {
+    gap: 14px;
+
+    padding-top: 16px;
+    padding-bottom: 16px;
+  }
+
+  .learning-item p {
+    font-size: 13.5px;
+    line-height: 1.7;
+  }
+
+  .learning-item.is-active {
+    padding-left: 5px;
+  }
+
+
+  /* ---------- RESEARCH ---------- */
+
+  .section-heading-row {
+    gap: 16px;
+  }
+
+  .research-archive .section-heading-row {
+    margin-bottom: 20px;
+  }
+
+  .research-filter {
+    gap: 6px;
+
+    margin-top: 12px;
+  }
+
+  .filter-button {
+    padding: 6px 9px;
+
+    font-size: 10.5px;
+  }
+
+  .publication-example {
+    margin-top: 20px;
+
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  .publication-example h3 {
+    font-size: 15.5px;
+    line-height: 1.5;
+  }
+
+  .publication-tags {
+    gap: 8px 10px;
+  }
+
+
+  /* ---------- PEOPLE ---------- */
+
+  .person-row {
+    grid-template-columns:
+      92px minmax(0, 1fr);
+
+    gap: 14px;
+
+    padding-top: 17px;
+    padding-bottom: 17px;
+  }
+
+  .person-name {
+    margin-bottom: 0;
+  }
+
+  .person-school {
+    font-size: 12.5px;
+  }
+
+  .person-major {
+    font-size: 11.5px;
+  }
+
+
+  /* ---------- RECRUITING ---------- */
+
+  .recruit-info-row {
+    grid-template-columns:
+      110px minmax(0, 1fr);
+
+    gap: 14px;
+
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+
+
+  /* ---------- SCHEDULE ---------- */
+
+  .schedule-item {
+    grid-template-columns:
+      46px minmax(0, 1fr);
+
+    gap: 14px;
+
+    padding-top: 19px;
+    padding-bottom: 19px;
+  }
+
+  .schedule-meta {
+    grid-template-columns:
+      56px minmax(0, 1fr);
+
+    gap: 8px;
+  }
+
+
+  /* ---------- FOOTER ---------- */
+
+  .site-footer {
+    padding-top: 0;
+  }
+
+}
+
+
+/* 420px 이하에서도 People을 세로로 풀지 않고
+   compact two-column 유지 */
+
+@media (max-width: 420px) {
+
+  .person-row {
+    display: grid;
+
+    grid-template-columns:
+      84px minmax(0, 1fr);
+
+    gap: 12px;
+  }
+
+  .person-name {
+    margin-bottom: 0;
+  }
+
+}
+
+
+/* =========================================================
+   TOUCH DEVICES
+   모바일에서 hover가 눌린 상태로 남는 현상 방지
+========================================================= */
+
+@media (hover: none), (pointer: coarse) {
+
+  .profile-mark:hover {
+    transform: translateY(0) scale(1);
+
+    box-shadow: none;
+  }
+
+  .brand:hover {
+    color: #1d3557;
+    letter-spacing: -0.5px;
+  }
+
+  .tag-list span:hover,
+  .filter-button:hover,
+  .publication-links span:hover {
+    transform: none;
+
+    box-shadow: none;
+  }
+
+  .person-row:hover,
+  .schedule-item:hover,
+  .publication-example:hover {
+    transform: none;
+
+    padding-left: 0;
+    padding-right: 0;
+
+    background: transparent;
+  }
+
+  .text-link:hover .link-arrow {
+    transform: none;
+  }
+
+}
+
+/* =========================================================
+   MOBILE PASS 03 — PAGE-SPECIFIC FINISH
+========================================================= */
+
+@media (max-width: 720px) {
+
+  /* =========================================
+     RESEARCH
+  ========================================= */
+
+  .research-archive .section-heading-row {
+    display: block;
+  }
+
+  .research-filter {
+    width: 100%;
+
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+
+    gap: 7px;
+
+    overflow-x: auto;
+    scrollbar-width: none;
+
+    padding-bottom: 2px;
+  }
+
+  .research-filter::-webkit-scrollbar {
+    display: none;
+  }
+
+  .filter-button {
+    flex: 0 0 auto;
+
+    white-space: nowrap;
+  }
+
+  .research-year {
+    padding-top: 18px;
+  }
+
+  .year-heading {
+    margin-bottom: 15px !important;
+
+    font-size: 20px !important;
+  }
+
+  .research-empty-state {
+    padding-top: 12px;
+  }
+
+
+  /* =========================================
+     PUBLICATION
+  ========================================= */
+
+  .publication-example {
+    border-color: #e2e5e8;
+  }
+
+  .publication-type {
+    margin-bottom: 6px !important;
+  }
+
+  .publication-authors {
+    margin-bottom: 11px !important;
+  }
+
+  .publication-links {
+    gap: 6px;
+  }
+
+  .publication-links span {
+    padding: 5px 8px;
+  }
+
+
+  /* =========================================
+     RECRUITING
+  ========================================= */
+
+  body[data-page="recruiting"] .learning-item {
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+
+  body[data-page="recruiting"] .learning-item h3 {
+    font-size: 14.5px;
+  }
+
+  body[data-page="recruiting"] .learning-item p {
+    font-size: 13px;
+  }
+
+  .recruit-info-row span {
+    line-height: 1.45;
+  }
+
+  .recruit-info-row strong {
+    font-size: 12.5px;
+  }
+
+
+  /* =========================================
+     WEEKLY SCHEDULE
+  ========================================= */
+
+  .schedule-intro {
+    margin-bottom: 20px;
+  }
+
+  .schedule-date strong {
+    font-size: 21px;
+  }
+
+  .schedule-session {
+    padding-bottom: 16px;
+    margin-bottom: 16px;
+  }
+
+  .schedule-session h3 {
+    line-height: 1.5;
+  }
+
+  .schedule-practice {
+    font-size: 12.5px;
+  }
+
+  .schedule-meta {
+    font-size: 11.5px;
+  }
+
+
+  /* =========================================
+     NAV — MOBILE POLISH
+  ========================================= */
+
+  .main-nav {
+    scroll-behavior: smooth;
+
+    overscroll-behavior-x: contain;
+
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .main-nav a {
+    white-space: nowrap;
+  }
+
+}
 
 /* =========================================================
    QUEST MOTION — SECTION REVEAL
