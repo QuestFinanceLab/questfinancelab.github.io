@@ -11,10 +11,14 @@
     content="Quest는 금융권 취업과 실무 역량 강화를 목표로 하는 대학생연합금융투자학회입니다."
   >
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;500&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body>
+<body data-page="about">
 
   <!-- ==============================
        TOP NAVIGATION
@@ -105,7 +109,7 @@
 </section>
 
       <!-- AREAS -->
-<section class="content-section">
+<section class="content-section" data-reveal="static">
 
   <h2>Areas of Study</h2>
 
@@ -124,8 +128,7 @@
 
 </section>
      <!-- LEARNING MODEL -->
-<section class="content-section">
-
+<section class="content-section" data-reveal="first-item">
   <h2>How We Learn</h2>
 
   <div class="learning-list">
@@ -186,7 +189,9 @@
 
         <div class="section-heading-row">
           <h2>Recent Research</h2>
-          <span class="text-link">View all →</span>
+          <a class="text-link" href="research.html">
+  View all <span class="link-arrow">→</span>
+</a>
         </div>
 
         <div class="empty-research">
@@ -196,17 +201,15 @@
           </p>
         </div>
 
-      </section>
+      </section>  
 
 
       <!-- PHILOSOPHY -->
       <section class="content-section">
 
-       <!-- PHILOSOPHY -->
-<section class="content-section">
 
   <h2>Our Philosophy</h2>
-
+ 
   <p class="lead">
     Quest는 개인의 성장이 조직의 역량으로 축적되는 학회를 지향합니다.
   </p>
@@ -234,6 +237,6 @@
     </main>
 
   </div>
-
+<script src="js/motion.js"></script>
 </body>
 </html>
