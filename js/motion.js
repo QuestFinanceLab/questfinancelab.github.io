@@ -320,3 +320,42 @@ if (
   });
 
 }
+
+/* =========================================================
+   LANGUAGE SWITCH — KR / EN
+========================================================= */
+
+const languageSwitch =
+  document.querySelector(".language-switch");
+
+if (languageSwitch && page) {
+
+  const fileName =
+    page === "about"
+      ? "index.html"
+      : `${page}.html`;
+
+  const isEnglishPage =
+    window.location.pathname.includes("/en/");
+
+  if (isEnglishPage) {
+
+    languageSwitch.innerHTML = `
+      <a href="../${fileName}" aria-label="한국어 페이지로 이동">KR</a>
+      <span>/</span>
+      <span class="active-language">EN</span>
+    `;
+
+  }
+
+  else {
+
+    languageSwitch.innerHTML = `
+      <span class="active-language">KR</span>
+      <span>/</span>
+      <a href="en/${fileName}" aria-label="Go to English page">EN</a>
+    `;
+
+  }
+
+}
