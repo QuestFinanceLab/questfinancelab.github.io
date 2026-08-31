@@ -1,0 +1,56 @@
+/* =========================================================
+   QUEST FINANCE LAB — DYNAMIC RESEARCH ARCHIVE
+========================================================= */
+
+.research-publication-list {
+  width: 100%;
+}
+
+.research-publication {
+  margin-top: 0;
+}
+
+.research-publication + .research-publication {
+  border-top: 0;
+}
+
+.publication-summary {
+  margin: 0 0 14px !important;
+  color: #69737d !important;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.publication-links a {
+  display: inline-block;
+  padding: 4px 9px;
+  border: 1px solid #d8dde2;
+  border-radius: 3px;
+  color: #426a8c;
+  background: #fafbfc;
+  font-size: 11px;
+  line-height: 1.4;
+  transform: translateY(0);
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease,
+    background 0.2s ease,
+    transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.publication-links a:hover {
+  color: #1d3557;
+  border-color: rgba(29, 53, 87, 0.30);
+  background: #ffffff;
+  transform: translateY(-2px);
+}
+
+[data-research-archive] > .research-year + .research-year {
+  margin-top: 34px;
+}
+
+@media (max-width: 720px) {
+  .publication-summary {
+    font-size: 12.5px;
+  }
+}
